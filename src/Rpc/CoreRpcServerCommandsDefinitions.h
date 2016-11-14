@@ -1,5 +1,5 @@
 // Copyright (c) 2012-2016, The CryptoNote developers, The Bytecoin developers
-// Block explorer related changes Copyright (c) Forknote developers
+// Copyright (c) 2016, The Forknote developers
 //
 // This file is part of Bytecoin.
 //
@@ -308,7 +308,21 @@ struct COMMAND_RPC_STOP_DAEMON {
   typedef STATUS_STRUCT response;
 };
 
-//
+//-----------------------------------------------
+struct COMMAND_RPC_GET_FEE_ADDRESS {
+  typedef EMPTY_STRUCT request;
+
+  struct response {
+    std::string fee_address;
+	std::string status;
+
+    void serialize(ISerializer &s) {
+      KV_MEMBER(fee_address)
+	  KV_MEMBER(status)
+    }
+  };
+};
+
 struct COMMAND_RPC_GETBLOCKCOUNT {
   typedef std::vector<std::string> request;
 
